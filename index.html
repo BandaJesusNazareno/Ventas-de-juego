@@ -45,13 +45,13 @@
             <div class="space-y-3">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
                 <div class="grid grid-cols-2 gap-3">
-                    <button onclick="selectEdition('Standard', 29.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Estándar</div>
-                        <div class="text-xs text-indigo-300 font-semibold mt-1">29,99 €</div>
+                    <button onclick="selectEdition('Standard', 79.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Standard</div>
+                        <div class="text-xs text-indigo-300 font-semibold mt-1">79,99 €</div>
                     </button>
-                    <button onclick="selectEdition('Deluxe', 49.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Deluxe</div>
-                        <div class="text-xs text-slate-400 font-semibold mt-1">49,99 €</div>
+                    <button onclick="selectEdition('Ultimate Edition', 99.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Ultimate Edition</div>
+                        <div class="text-xs text-slate-400 font-semibold mt-1">99,99 €</div>
                     </button>
                 </div>
             </div>
@@ -71,8 +71,8 @@
 
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
                 <div class="flex justify-between text-slate-400">
-                    <span id="summary-edition">Cyber Quest (Estándar)</span>
-                    <span id="summary-price">29,99 €</span>
+                    <span id="summary-edition">Cyber Quest (Standard)</span>
+                    <span id="summary-price">79,99 €</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                     <span>Plataforma</span>
@@ -88,7 +88,7 @@
                 </div>
                 <div class="border-t border-slate-800 pt-2 flex justify-between font-bold text-base text-white">
                     <span>Total</span>
-                    <span id="summary-total" class="text-indigo-400">29,99 €</span>
+                    <span id="summary-total" class="text-indigo-400">79,99 €</span>
                 </div>
             </div>
 
@@ -135,8 +135,8 @@
 
     <!-- Script de control de la simulación -->
     <script>
-        let selectedEditionName = 'Estándar';
-        let selectedPrice = 29.99;
+        let selectedEditionName = 'Standard';
+        let selectedPrice = 79.99;
         let selectedPlatformName = 'PlayStation';
 
         function selectEdition(edition, price) {
@@ -197,7 +197,7 @@
 
         function resetApp() {
             document.getElementById('recipient-input').value = '';
-            selectEdition('Standard', 29.99);
+            selectEdition('Standard', 79.99);
             selectPlatform('PlayStation');
             goToStep(1);
         }
