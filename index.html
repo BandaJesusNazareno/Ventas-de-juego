@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA CON ICONOS -->
+            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA CON SUS SÍMBOLOS OFICIALES -->
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">¿A quién le regalas el juego?</label>
@@ -35,21 +35,23 @@
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
                     <div class="grid grid-cols-2 gap-2">
-                        <!-- PlayStation 5 -->
+                        <!-- Botón PlayStation 5 -->
                         <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center">
-                            <div class="flex items-center gap-1.5 font-bold text-xs text-indigo-200">
-                                <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M18.8 15.6c-.5-.3-3-1.5-3.5-1.7-.5-.2-.9-.3-1.2.2-.3.5-1.4 1.7-1.7 2-.3.3-.6.3-1.1 0-.5-.3-2.2-.8-4.2-2.6-1.5-1.4-2.6-3.1-2.9-3.6-.3-.5 0-.8.2-1 .2-.2.5-.5.8-.8.3-.3.4-.5.6-.8.2-.3.1-.6 0-.8-.1-.2-1.2-2.8-1.6-3.9-.4-1-.8-1-1.2-1h-1c-.3 0-.8.1-1.2.5-.4.4-1.5 1.5-1.5 3.6s1.6 4.1 1.8 4.4c.2.3 3.1 4.7 7.5 6.6 1.1.5 2 .8 2.7 1 .9.3 1.8.3 2.5.2.8-.1 3-1.2 3.4-2.4.4-1.2.4-2.2.3-2.4-.1-.2-.4-.3-.9-.6z"/></svg>
+                            <div class="flex items-center gap-2 font-bold text-xs text-indigo-200">
+                                <!-- Icono Oficial PlayStation -->
+                                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M18.8 15.6c-.5-.3-3-1.5-3.5-1.7-.5-.2-.9-.3-1.2.2-.3.5-1.4 1.7-1.7 2-.3.3-.6.3-1.1 0-.5-.3-2.2-.8-4.2-2.6-1.5-1.4-2.6-3.1-2.9-3.6-.3-.5 0-.8.2-1 .2-.2.5-.5.8-.8.3-.3.4-.5.6-.8.2-.3.1-.6 0-.8-.1-.2-1.2-2.8-1.6-3.9-.4-1-.8-1-1.2-1h-1c-.3 0-.8.1-1.2.5-.4.4-1.5 1.5-1.5 3.6s1.6 4.1 1.8 4.4c.2.3 3.1 4.7 7.5 6.6 1.1.5 2 .8 2.7 1 .9.3 1.8.3 2.5.2.8-.1 3-1.2 3.4-2.4.4-1.2.4-2.2.3-2.4-.1-.2-.4-.3-.9-.6z"/></svg>
                                 PlayStation 5
                             </div>
-                            <span class="text-[8px] text-indigo-400 font-medium pl-5">PRECOMPRAR ›</span>
+                            <span class="text-[8px] text-indigo-400 font-medium pl-6">PRECOMPRAR ›</span>
                         </button>
-                        <!-- Xbox Series X|S -->
+                        <!-- Botón Xbox Series X|S -->
                         <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center">
-                            <div class="flex items-center gap-1.5 font-bold text-xs text-slate-400" id="xbox-text">
-                                <svg class="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.49 18.06c-.32-.42-1.72-1.92-3.11-3.61-.41-.49-.82-.99-1.22-1.48.24-.31.48-.62.72-.93 1.57-2.02 3.31-4.27 3.61-4.69.58-.8 1.15-1.6 1.72-2.4-1.39-1.12-3.14-1.85-5.06-1.85-2.22 0-4.18.98-5.5 2.52.5.38 1.05.81 1.63 1.28 1.14.93 2.5 2.04 3.18 2.65-.68.61-2.04 1.72-3.18 2.65-.58.47-1.13.9-1.63 1.28 1.32 1.54 3.28 2.52 5.5 2.52 1.92 0 3.67-.73 5.06-1.85-.57-.8-1.14-1.6-1.72-2.4z"/></svg>
+                            <div class="flex items-center gap-2 font-bold text-xs text-slate-400" id="xbox-text">
+                                <!-- Icono Oficial Xbox -->
+                                <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.49 18.06c-.32-.42-1.72-1.92-3.11-3.61-.41-.49-.82-.99-1.22-1.48.24-.31.48-.62.72-.93 1.57-2.02 3.31-4.27 3.61-4.69.58-.8 1.15-1.6 1.72-2.4-1.39-1.12-3.14-1.85-5.06-1.85-2.22 0-4.18.98-5.5 2.52.5.38 1.05.81 1.63 1.28 1.14.93 2.5 2.04 3.18 2.65-.68.61-2.04 1.72-3.18 2.65-.58.47-1.13.9-1.63 1.28 1.32 1.54 3.28 2.52 5.5 2.52 1.92 0 3.67-.73 5.06-1.85-.57-.8-1.14-1.6-1.72-2.4z"/></svg>
                                 Xbox Series X|S
                             </div>
-                            <span class="text-[8px] text-slate-500 font-medium pl-5" id="xbox-sub">PRECOMPRAR ›</span>
+                            <span class="text-[8px] text-slate-500 font-medium pl-6" id="xbox-sub">PRECOMPRAR ›</span>
                         </button>
                     </div>
                 </div>
@@ -114,7 +116,7 @@
                     </label>
                     <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
                         <input type="radio" name="payment" class="accent-indigo-500">
-                        <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>[cite: 6]
+                        <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
                     </label>
                 </div>
             </div>
@@ -174,20 +176,20 @@
 
             if (platform === 'PlayStation 5') {
                 psBtn.className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                psBtn.querySelector('div').className = "flex items-center gap-1.5 font-bold text-xs text-indigo-200";
-                psBtn.querySelector('span').className = "text-[8px] text-indigo-400 font-medium pl-5";
+                psBtn.querySelector('div').className = "flex items-center gap-2 font-bold text-xs text-indigo-200";
+                psBtn.querySelector('span').className = "text-[8px] text-indigo-400 font-medium pl-6";
 
                 xboxBtn.className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                xboxText.className = "flex items-center gap-1.5 font-bold text-xs text-slate-400";
-                xboxSub.className = "text-[8px] text-slate-500 font-medium pl-5";
+                xboxText.className = "flex items-center gap-2 font-bold text-xs text-slate-400";
+                xboxSub.className = "text-[8px] text-slate-500 font-medium pl-6";
             } else {
                 xboxBtn.className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                xboxText.className = "flex items-center gap-1.5 font-bold text-xs text-indigo-200";
-                xboxSub.className = "text-[8px] text-indigo-400 font-medium pl-5";
+                xboxText.className = "flex items-center gap-2 font-bold text-xs text-indigo-200";
+                xboxSub.className = "text-[8px] text-indigo-400 font-medium pl-6";
 
                 psBtn.className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                psBtn.querySelector('div').className = "flex items-center gap-1.5 font-bold text-xs text-slate-400";
-                psBtn.querySelector('span').className = "text-[8px] text-slate-500 font-medium pl-5";
+                psBtn.querySelector('div').className = "flex items-center gap-2 font-bold text-xs text-slate-400";
+                psBtn.querySelector('span').className = "text-[8px] text-slate-500 font-medium pl-6";
             }
         }
 
