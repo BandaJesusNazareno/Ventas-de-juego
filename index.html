@@ -1,287 +1,287 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Tienda - Grand Theft Auto VI</title>
-    <!-- Tailwind CSS para un diseño moderno -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Firebase SDK Modular con tus claves reales -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Tienda - Grand Theft Auto VI</title>
+    <!-- Tailwind CSS para un diseño moderno -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Firebase SDK Modular con tus claves reales -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
 
-        // CONFIGURACIÓN DE TU NUEVO PROYECTO FIREBASE (Gta6-tienda-2026)
-        const firebaseConfig = {
-            apiKey: "AIzaSyDrRXuNVzxZUy9PfEslOTgBqGxgVGSv3sg",
-            authDomain: "gta6-tienda-2026.firebaseapp.com",
-            projectId: "gta6-tienda-2026",
-            storageBucket: "gta6-tienda-2026.firebasestorage.app",
-            messagingSenderId: "250660173153",
-            appId: "1:250660173153:web:6dd1f0c8052452471ac120"
-        };
+        // CONFIGURACIÓN DE TU NUEVO PROYECTO FIREBASE (Gta6-tienda-2026)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDrRXuNVzxZUy9PfEslOTgBqGxgVGSv3sg",
+            authDomain: "gta6-tienda-2026.firebaseapp.com",
+            projectId: "gta6-tienda-2026",
+            storageBucket: "gta6-tienda-2026.firebasestorage.app",
+            messagingSenderId: "250660173153",
+            appId: "1:250660173153:web:6dd1f0c8052452471ac120"
+        };
 
-        // Inicializar Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-        // Función global para guardar cada compra en la colección 'compras_gta6' de Firestore
-        window.guardarCompraEnFirebase = async function(compraData) {
-            try {
-                await addDoc(collection(db, "compras_gta6"), {
-                    ...compraData,
-                    fecha: serverTimestamp()
-                });
-                console.log("¡Compra guardada en Firebase con éxito!");
-            } catch (e) {
-                console.error("Error al guardar en Firebase: ", e);
-            }
-        };
-    </script>
+        // Función global para guardar cada compra en la colección 'compras_gta6' de Firestore
+        window.guardarCompraEnFirebase = async function(compraData) {
+            try {
+                await addDoc(collection(db, "compras_gta6"), {
+                    ...compraData,
+                    fecha: serverTimestamp()
+                });
+                console.log("¡Compra guardada en Firebase con éxito!");
+            } catch (e) {
+                console.error("Error al guardar en Firebase: ", e);
+            }
+        };
+    </script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
 
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden" id="app">
-        
-        <!-- PASO 1: DETALLES DEL JUEGO, DESTINATARIO Y PLATAFORMA -->
-        <div id="step-1" class="p-6 space-y-6">
-            
-            <!-- Cabecera con enlace directo a tu banner.png en GitHub -->
-            <div class="relative h-44 rounded-xl overflow-hidden flex items-end p-4 shadow-inner border border-slate-800 bg-slate-900 bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 60%, transparent 100%), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/banner.png');">
-                
-                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full z-10">En Stock</span>
-                
-                <div class="relative z-10">
-                    <h2 class="text-lg font-black tracking-tight text-white drop-shadow-md">Grand Theft Auto VI</h2>
-                    <p class="text-xs text-indigo-300 font-semibold">Ultimate Edition • Rockstar Games</p>
-                </div>
-            </div>
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden" id="app">
+        
+        <!-- PASO 1: DETALLES DEL JUEGO, DESTINATARIO Y PLATAFORMA -->
+        <div id="step-1" class="p-6 space-y-6">
+            
+            <!-- Cabecera con enlace directo a tu banner.png en GitHub -->
+            <div class="relative h-44 rounded-xl overflow-hidden flex items-end p-4 shadow-inner border border-slate-800 bg-slate-900 bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 60%, transparent 100%), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/banner.png');">
+                
+                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full z-10">En Stock</span>
+                
+                <div class="relative z-10">
+                    <h2 class="text-lg font-black tracking-tight text-white drop-shadow-md">Grand Theft Auto VI</h2>
+                    <p class="text-xs text-indigo-300 font-semibold">Ultimate Edition • Rockstar Games</p>
+                </div>
+            </div>
 
-            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">¿A quién le regalas el juego?</label>
-                    <input type="text" id="recipient-input" placeholder="Nombre o Gamertag" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
-                </div>
+            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA -->
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">¿A quién le regalas el juego?</label>
+                    <input type="text" id="recipient-input" placeholder="Nombre o Gamertag" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                </div>
 
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <!-- PlayStation 5 -->
-                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300">
-                            PlayStation 5
-                        </button>
-                        <!-- Xbox Series X|S -->
-                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400">
-                            Xbox Series X|S
-                        </button>
-                    </div>
-                </div>
-            </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <!-- PlayStation 5 -->
+                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300">
+                            PlayStation 5
+                        </button>
+                        <!-- Xbox Series X|S -->
+                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400">
+                            Xbox Series X|S
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-            <div class="space-y-3">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="selectEdition('Standard', 79.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Standard</div>
-                        <div class="text-xs text-indigo-300 font-semibold mt-1">79,99 €</div>
-                    </button>
-                    <button onclick="selectEdition('Ultimate Edition', 99.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Ultimate Edition</div>
-                        <div class="text-xs text-slate-400 font-semibold mt-1">99,99 €</div>
-                    </button>
-                </div>
-            </div>
+            <div class="space-y-3">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="selectEdition('Standard', 79.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Standard</div>
+                        <div class="text-xs text-indigo-300 font-semibold mt-1">79,99 €</div>
+                    </button>
+                    <button onclick="selectEdition('Ultimate Edition', 99.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Ultimate Edition</div>
+                        <div class="text-xs text-slate-400 font-semibold mt-1">99,99 €</div>
+                    </button>
+                </div>
+            </div>
 
-            <button onclick="goToStep(2)" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
-                Comprar ahora
-            </button>
-        </div>
+            <button onclick="goToStep(2)" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+                Comprar ahora
+            </button>
+        </div>
 
-        <!-- PASO 2: MÉTODO DE PAGO Y CONFIRMACIÓN -->
-        <div id="step-2" class="p-6 space-y-6 hidden">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-                <button onclick="goToStep(1)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer">← Volver</button>
-                <h3 class="font-bold text-sm">Finalizar Pedido</h3>
-                <span></span>
-            </div>
+        <!-- PASO 2: MÉTODO DE PAGO Y CONFIRMACIÓN -->
+        <div id="step-2" class="p-6 space-y-6 hidden">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <button onclick="goToStep(1)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer">← Volver</button>
+                <h3 class="font-bold text-sm">Finalizar Pedido</h3>
+                <span></span>
+            </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
-                <div class="flex justify-between text-slate-400">
-                    <span id="summary-edition">GTA VI (Standard)</span>
-                    <span id="summary-price">79,99 €</span>
-                </div>
-                <div class="flex justify-between text-slate-400">
-                    <span>Plataforma</span>
-                    <span id="summary-platform" class="text-indigo-400 font-bold">PlayStation 5</span>
-                </div>
-                <div class="flex justify-between text-slate-400">
-                    <span>Para el usuario</span>
-                    <span id="summary-recipient" class="text-emerald-400 font-bold"></span>
-                </div>
-                <div class="flex justify-between text-slate-400">
-                    <span>Impuestos incluidos</span>
-                    <span>0,00 €</span>
-                </div>
-                <div class="border-t border-slate-800 pt-2 flex justify-between font-bold text-base text-white">
-                    <span>Total</span>
-                    <span id="summary-total" class="text-indigo-400">79,99 €</span>
-                </div>
-            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
+                <div class="flex justify-between text-slate-400">
+                    <span id="summary-edition">GTA VI (Standard)</span>
+                    <span id="summary-price">79,99 €</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Plataforma</span>
+                    <span id="summary-platform" class="text-indigo-400 font-bold">PlayStation 5</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Para el usuario</span>
+                    <span id="summary-recipient" class="text-emerald-400 font-bold"></span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Impuestos incluidos</span>
+                    <span>0,00 €</span>
+                </div>
+                <div class="border-t border-slate-800 pt-2 flex justify-between font-bold text-base text-white">
+                    <span>Total</span>
+                    <span id="summary-total" class="text-indigo-400">79,99 €</span>
+                </div>
+            </div>
 
-            <div class="space-y-3">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
-                <div class="space-y-2">
-                    <!-- Tarjeta VISA -->
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <input type="radio" name="payment" value="VISA" checked class="accent-indigo-500">
-                            <span class="text-sm font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
-                        </div>
-                        <div class="bg-white px-2 py-0.5 rounded shadow-sm flex items-center justify-center">
-                            <span class="text-blue-700 font-black italic tracking-tighter text-xs">VISA</span>
-                        </div>
-                    </label>
+            <div class="space-y-3">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
+                <div class="space-y-2">
+                    <!-- Tarjeta VISA -->
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <input type="radio" name="payment" value="VISA" checked class="accent-indigo-500">
+                            <span class="text-sm font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
+                        </div>
+                        <div class="bg-white px-2 py-0.5 rounded shadow-sm flex items-center justify-center">
+                            <span class="text-blue-700 font-black italic tracking-tighter text-xs">VISA</span>
+                        </div>
+                    </label>
 
-                    <!-- PayPal -->
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
-                        <div class="flex items-center gap-3">
-                            <input type="radio" name="payment" value="PayPal" class="accent-indigo-500">
-                            <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
-                        </div>
-                        <span class="text-xs text-sky-400 font-bold">PayPal</span>
-                    </label>
-                </div>
-            </div>
+                    <!-- PayPal -->
+                    <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
+                        <div class="flex items-center gap-3">
+                            <input type="radio" name="payment" value="PayPal" class="accent-indigo-500">
+                            <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
+                        </div>
+                        <span class="text-xs text-sky-400 font-bold">PayPal</span>
+                    </label>
+                </div>
+            </div>
 
-            <button onclick="completePurchase()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
-                Confirmar y Pagar
-            </button>
-        </div>
+            <button onclick="completePurchase()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+                Confirmar y Pagar
+            </button>
+        </div>
 
-        <!-- PASO 3: PANTALLA DE ÉXITO -->
-        <div id="step-3" class="p-8 text-center space-y-6 hidden">
-            <!-- Insignia del método de pago elegido -->
-            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
+        <!-- PASO 3: PANTALLA DE ÉXITO -->
+        <div id="step-3" class="p-8 text-center space-y-6 hidden">
+            <!-- Insignia del método de pago elegido -->
+            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
 
-            <div class="space-y-2">
-                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
-                <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
-            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
+                <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
+            </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
-                <div class="text-slate-500 flex justify-between">
-                    <span>Nº de pedido:</span>
-                    <span id="order-id" class="text-slate-300 font-mono"></span>
-                </div>
-                <div class="text-slate-500 flex justify-between">
-                    <span>Plataforma:</span>
-                    <span id="final-platform-text" class="text-slate-300 font-bold"></span>
-                </div>
-                <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
-                    <span>Método de pago:</span>
-                    <span id="final-payment-method" class="text-slate-200 font-bold"></span>
-                </div>
-            </div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
+                <div class="text-slate-500 flex justify-between">
+                    <span>Nº de pedido:</span>
+                    <span id="order-id" class="text-slate-300 font-mono"></span>
+                </div>
+                <div class="text-slate-500 flex justify-between">
+                    <span>Plataforma:</span>
+                    <span id="final-platform-text" class="text-slate-300 font-bold"></span>
+                </div>
+                <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
+                    <span>Método de pago:</span>
+                    <span id="final-payment-method" class="text-slate-200 font-bold"></span>
+                </div>
+            </div>
 
-            <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
-                Finalizar compra
-            </button>
-        </div>
+            <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
+                Finalizar compra
+            </button>
+        </div>
 
-    </div>
+    </div>
 
-    <!-- Script de control y guardado -->
-    <script>
-        let selectedEditionName = 'Standard';
-        let selectedPrice = 79.99;
-        let selectedPlatformName = 'PlayStation 5';
+    <!-- Script de control y guardado -->
+    <script>
+        let selectedEditionName = 'Standard';
+        let selectedPrice = 79.99;
+        let selectedPlatformName = 'PlayStation 5';
 
-        function selectEdition(edition, price) {
-            selectedEditionName = edition;
-            selectedPrice = price;
+        function selectEdition(edition, price) {
+            selectedEditionName = edition;
+            selectedPrice = price;
 
-            if (edition === 'Standard') {
-                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
-                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
-            } else {
-                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
-                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
-            }
-        }
+            if (edition === 'Standard') {
+                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+            } else {
+                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+            }
+        }
 
-        function selectPlatform(platform) {
-            selectedPlatformName = platform;
-            if (platform === 'PlayStation 5') {
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
-            } else {
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
-            }
-        }
+        function selectPlatform(platform) {
+            selectedPlatformName = platform;
+            if (platform === 'PlayStation 5') {
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+            } else {
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+            }
+        }
 
-        function goToStep(step) {
-            document.getElementById('step-1').classList.add('hidden');
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.add('hidden');
+        function goToStep(step) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
 
-            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
+            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
 
-            if (step === 1) {
-                document.getElementById('step-1').classList.remove('hidden');
-            } else if (step === 2) {
-                document.getElementById('summary-edition').innerText = `GTA VI (${selectedEditionName})`;
-                document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
-                document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
-                document.getElementById('summary-platform').innerText = selectedPlatformName;
-                document.getElementById('summary-recipient').innerText = recipientName;
-                document.getElementById('step-2').classList.remove('hidden');
-            }
-        }
+            if (step === 1) {
+                document.getElementById('step-1').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('summary-edition').innerText = `GTA VI (${selectedEditionName})`;
+                document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-platform').innerText = selectedPlatformName;
+                document.getElementById('summary-recipient').innerText = recipientName;
+                document.getElementById('step-2').classList.remove('hidden');
+            }
+        }
 
-        function completePurchase() {
-            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
-            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PURCHASE-' + Math.floor(100000 + Math.random() * 900000);
-            
-            const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
-            const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
-            
-            const iconContainer = document.getElementById('success-payment-icon');
-            if (selectedPayment === 'VISA') {
-                iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-base">VISA</span>`;
-            } else {
-                iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-xs">PayPal</span>`;
-            }
+        function completePurchase() {
+            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
+            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PURCHASE-' + Math.floor(100000 + Math.random() * 900000);
+            
+            const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+            const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
+            
+            const iconContainer = document.getElementById('success-payment-icon');
+            if (selectedPayment === 'VISA') {
+                iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-base">VISA</span>`;
+            } else {
+                iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-xs">PayPal</span>`;
+            }
 
-            document.getElementById('order-id').innerText = randomId;
-            document.getElementById('final-recipient').innerText = recipientName;
-            document.getElementById('final-platform').innerText = selectedPlatformName;
-            document.getElementById('final-platform-text').innerText = selectedPlatformName;
-            document.getElementById('final-payment-method').innerText = paymentText;
+            document.getElementById('order-id').innerText = randomId;
+            document.getElementById('final-recipient').innerText = recipientName;
+            document.getElementById('final-platform').innerText = selectedPlatformName;
+            document.getElementById('final-platform-text').innerText = selectedPlatformName;
+            document.getElementById('final-payment-method').innerText = paymentText;
 
-            // Enviar datos reales a Firestore en el nuevo proyecto
-            if (window.guardarCompraEnFirebase) {
-                window.guardarCompraEnFirebase({
-                    pedidoId: randomId,
-                    usuario: recipientName,
-                    plataforma: selectedPlatformName,
-                    edicion: selectedEditionName,
-                    precio: selectedPrice,
-                    metodoPago: paymentText
-                });
-            }
-            
-            document.getElementById('step-2').classList.add('hidden');
-            document.getElementById('step-3').classList.remove('hidden');
-        }
+            // Enviar datos reales a Firestore en el nuevo proyecto
+            if (window.guardarCompraEnFirebase) {
+                window.guardarCompraEnFirebase({
+                    pedidoId: randomId,
+                    usuario: recipientName,
+                    plataforma: selectedPlatformName,
+                    edicion: selectedEditionName,
+                    precio: selectedPrice,
+                    metodoPago: paymentText
+                });
+            }
+            
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+        }
 
-        function resetApp() {
-            document.getElementById('recipient-input').value = '';
-            selectEdition('Standard', 79.99);
-            selectPlatform('PlayStation 5');
-            goToStep(1);
-        }
-    </script>
+        function resetApp() {
+            document.getElementById('recipient-input').value = '';
+            selectEdition('Standard', 79.99);
+            selectPlatform('PlayStation 5');
+            goToStep(1);
+        }
+    </script>
 </body>
 </html>
