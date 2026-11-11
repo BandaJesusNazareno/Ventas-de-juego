@@ -19,17 +19,37 @@
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">🎮</div>
                     <div>
-                        <div class="text-[10px] text-slate-400 uppercase tracking-wider">Perfil Activo:</div>
+                        <div class="text-[10px] text-slate-400 uppercase tracking-wider">Tu Perfil (Comprador):</div>
                         <input type="text" id="gamertag-input" value="mikilin1991" class="bg-transparent font-bold text-sm text-indigo-400 focus:outline-none border-b border-indigo-500/50 w-36">
                     </div>
                 </div>
                 <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">Online</span>
             </div>
 
-            <div class="relative h-40 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
+            <!-- NUEVO: SELECCIÓN DE DESTINATARIO Y PLATAFORMA -->
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">¿A quién le regalas el juego?</label>
+                    <input type="text" id="recipient-input" placeholder="Ej. AmigoGamer99" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" onclick="selectPlatform('PlayStation')" id="btn-ps" class="p-2 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300">
+                            PlayStation
+                        </button>
+                        <button type="button" onclick="selectPlatform('Xbox')" id="btn-xbox" class="p-2 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400">
+                            Xbox
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-32 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
                 <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">En Stock</span>
                 <div>
-                    <h2 class="text-xl font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
+                    <h2 class="text-lg font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
                     <p class="text-xs text-slate-400">Desarrollado por Indie Studio • RPG / Acción</p>
                 </div>
             </div>
@@ -67,8 +87,16 @@
                     <span id="summary-price">29,99 €</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
-                    <span>Cuenta de destino</span>
-                    <span id="summary-user" class="text-indigo-400 font-medium">mikilin1991</span>
+                    <span>Plataforma</span>
+                    <span id="summary-platform" class="text-indigo-400 font-bold">PlayStation</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Para el usuario</span>
+                    <span id="summary-recipient" class="text-emerald-400 font-bold"></span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Comprado por</span>
+                    <span id="summary-user" class="text-slate-300 font-medium">mikilin1991</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
                     <span>Impuestos incluidos</span>
@@ -105,14 +133,14 @@
                 ✓
             </div>
             <div class="space-y-2">
-                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
-                <p class="text-xs text-slate-400">Tu contenido se está preparando para la descarga en la cuenta de <span id="final-user" class="text-indigo-400 font-bold"></span>.</p>
+                <h3 class="text-xl font-black">¡Regalo realizado con éxito!</h3>
+                <p class="text-xs text-slate-400">El juego se ha enviado a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-1">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-2">
                 <div class="text-slate-500">Nº de pedido: <span id="order-id" class="text-slate-300 font-mono"></span></div>
-                <div class="text-slate-500">Perfil: <span id="final-user-tag" class="text-slate-300 font-bold"></span></div>
-                <div class="text-slate-500">Plataforma: <span class="text-slate-300">Xbox Series X / PS5 (Simulado)</span></div>
+                <div class="text-slate-500">Comprador: <span id="final-user-tag" class="text-slate-300 font-bold"></span></div>
+                <div class="text-slate-500">Plataforma: <span id="final-platform-text" class="text-slate-300 font-bold"></span></div>
             </div>
 
             <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
@@ -126,6 +154,7 @@
     <script>
         let selectedEditionName = 'Estándar';
         let selectedPrice = 29.99;
+        let selectedPlatformName = 'PlayStation';
 
         function selectEdition(edition, price) {
             selectedEditionName = edition;
@@ -140,19 +169,33 @@
             }
         }
 
+        function selectPlatform(platform) {
+            selectedPlatformName = platform;
+            if (platform === 'PlayStation') {
+                document.getElementById('btn-ps').className = "p-2 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-xbox').className = "p-2 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+            } else {
+                document.getElementById('btn-xbox').className = "p-2 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-ps').className = "p-2 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+            }
+        }
+
         function goToStep(step) {
             document.getElementById('step-1').classList.add('hidden');
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.add('hidden');
 
             const currentGamertag = document.getElementById('gamertag-input').value || 'mikilin1991';
+            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
 
             if (step === 1) {
                 document.getElementById('step-1').classList.remove('hidden');
             } else if (step === 2) {
                 document.getElementById('summary-edition').innerText = `Cyber Quest (${selectedEditionName})`;
                 document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
-                document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-total').innerText =`${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-platform').innerText = selectedPlatformName;
+                document.getElementById('summary-recipient').innerText = recipientName;
                 document.getElementById('summary-user').innerText = currentGamertag;
                 document.getElementById('step-2').classList.remove('hidden');
             }
@@ -160,18 +203,23 @@
 
         function completePurchase() {
             const currentGamertag = document.getElementById('gamertag-input').value || 'mikilin1991';
-            const randomId = 'XBOX-PS-' + Math.floor(100000 + Math.random() * 900000);
+            const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
+            const randomId = selectedPlatformName.toUpperCase() + '-GIFT-' + Math.floor(100000 + Math.random() * 900000);
             
             document.getElementById('order-id').innerText = randomId;
-            document.getElementById('final-user').innerText = currentGamertag;
             document.getElementById('final-user-tag').innerText = currentGamertag;
+            document.getElementById('final-recipient').innerText = recipientName;
+            document.getElementById('final-platform').innerText = selectedPlatformName;
+            document.getElementById('final-platform-text').innerText = selectedPlatformName + ' (Simulado)';
             
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
         }
 
         function resetApp() {
+            document.getElementById('recipient-input').value = '';
             selectEdition('Standard', 29.99);
+            selectPlatform('PlayStation');
             goToStep(1);
         }
     </script>
