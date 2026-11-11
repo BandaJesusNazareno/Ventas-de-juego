@@ -160,39 +160,48 @@
             </button>
         </div>
 
-        <!-- PASO 3: PANTALLA DE ÉXITO -->
+        <!-- PASO 3: PANTALLA DE CARGA Y ÉXITO -->
         <div id="step-3" class="p-8 text-center space-y-6 hidden">
             <!-- Insignia del método de pago elegido -->
             <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
 
-            <div class="space-y-2">
-                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
-                <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
+            <!-- CONTENEDOR DE CARGA (Visible solo durante los 3 segundos iniciales) -->
+            <div id="loading-container" class="py-6 space-y-4 flex flex-col items-center">
+                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                <p class="text-xs text-slate-400 font-medium">Procesando pago seguro...</p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
-                <div class="text-slate-500 flex justify-between">
-                    <span>Nº de pedido:</span>
-                    <span id="order-id" class="text-slate-300 font-mono"></span>
+            <!-- CONTENEDOR DE ÉXITO (Oculto al principio, se muestra tras la carga) -->
+            <div id="success-content" class="space-y-6 hidden">
+                <div class="space-y-2">
+                    <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
+                    <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
                 </div>
-                <div class="text-slate-500 flex justify-between">
-                    <span>Plataforma:</span>
-                    <span id="final-platform-text" class="text-slate-300 font-bold"></span>
-                </div>
-                <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
-                    <span>Método de pago:</span>
-                    <span id="final-payment-method" class="text-slate-200 font-bold"></span>
-                </div>
-            </div>
 
-            <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
-                Finalizar compra
-            </button>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
+                    <div class="text-slate-500 flex justify-between">
+                        <span>Nº de pedido:</span>
+                        <span id="order-id" class="text-slate-300 font-mono"></span>
+                    </div>
+                    <div class="text-slate-500 flex justify-between">
+                        <span>Plataforma:</span>
+                        <span id="final-platform-text" class="text-slate-300 font-bold"></span>
+                    </div>
+                    <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
+                        <span>Método de pago:</span>
+                        <span id="final-payment-method" class="text-slate-200 font-bold"></span>
+                    </div>
+                </div>
+
+                <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
+                    Finalizar compra
+                </button>
+            </div>
         </div>
 
     </div>
 
-    <!-- Script de control y guardado -->
+    <!-- Script de control y animación de carga -->
     <script>
         let selectedEditionName = 'Standard';
         let selectedPrice = 79.99;
@@ -255,26 +264,36 @@
                 iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-xs">PayPal</span>`;
             }
 
+            // Rellenar datos en segundo plano
             document.getElementById('order-id').innerText = randomId;
             document.getElementById('final-recipient').innerText = recipientName;
             document.getElementById('final-platform').innerText = selectedPlatformName;
             document.getElementById('final-platform-text').innerText = selectedPlatformName;
             document.getElementById('final-payment-method').innerText = paymentText;
 
-            // Enviar datos reales a Firestore en el nuevo proyecto
-            if (window.guardarCompraEnFirebase) {
-                window.guardarCompraEnFirebase({
-                    pedidoId: randomId,
-                    usuario: recipientName,
-                    plataforma: selectedPlatformName,
-                    edicion: selectedEditionName,
-                    precio: selectedPrice,
-                    metodoPago: paymentText
-                });
-            }
-            
+            // Mostrar el paso 3 pero solo con el icono de pago y el círculo de carga
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
+            document.getElementById('loading-container').classList.remove('hidden');
+            document.getElementById('success-content').classList.add('hidden');
+
+            // Simular 3 segundos de carga y luego mostrar el contenido de éxito y guardar en Firebase
+            setTimeout(() => {
+                document.getElementById('loading-container').classList.add('hidden');
+                document.getElementById('success-content').classList.remove('hidden');
+
+                // Enviar datos reales a Firestore en el nuevo proyecto
+                if (window.guardarCompraEnFirebase) {
+                    window.guardarCompraEnFirebase({
+                        pedidoId: randomId,
+                        usuario: recipientName,
+                        plataforma: selectedPlatformName,
+                        edicion: selectedEditionName,
+                        precio: selectedPrice,
+                        metodoPago: paymentText
+                    });
+                }
+            }, 3000);
         }
 
         function resetApp() {
