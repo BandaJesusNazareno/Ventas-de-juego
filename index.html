@@ -69,12 +69,13 @@
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
                     <div class="grid grid-cols-2 gap-2">
-                        <!-- PlayStation 5 -->
-                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300">
+                        <!-- PlayStation 5 con su imagen play-station.jpg integrada al lado -->
+                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300">
+                            <img src="https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/play-station.jpg" alt="PS5" class="w-5 h-5 object-contain rounded invert brightness-200">
                             PlayStation 5
                         </button>
                         <!-- Xbox Series X|S -->
-                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400">
+                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400">
                             Xbox Series X|S
                         </button>
                     </div>
@@ -224,11 +225,11 @@
         function selectPlatform(platform) {
             selectedPlatformName = platform;
             if (platform === 'PlayStation 5') {
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400";
             } else {
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400";
             }
         }
 
