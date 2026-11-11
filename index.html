@@ -40,88 +40,88 @@
     </script>
 </head>
 <!-- FONDO DE PANTALLA CON TU IMAGEN GTA6.png Y FILTRO OSCURO -->
-<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(2, 6, 23, 0.82), rgba(2, 6, 23, 0.82)), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/GTA6.png');">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-3 bg-cover bg-center bg-no-repeat" style="background-image: linear-gradient(rgba(2, 6, 23, 0.82), rgba(2, 6, 23, 0.82)), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/GTA6.png');">
 
     <div class="w-full max-w-md bg-slate-900/95 backdrop-blur-md border border-slate-800 rounded-2xl shadow-2xl overflow-hidden" id="app">
         
         <!-- PASO 1: DETALLES DEL JUEGO, DESTINATARIO Y PLATAFORMA -->
-        <div id="step-1" class="p-6 space-y-6">
+        <div id="step-1" class="p-4 space-y-3">
             
-            <!-- Cabecera con enlace directo a tu banner.png en GitHub -->
-            <div class="relative h-44 rounded-xl overflow-hidden flex items-end p-4 shadow-inner border border-slate-800 bg-slate-900 bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 60%, transparent 100%), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/banner.png');">
+            <!-- Cabecera con enlace directo a tu banner.png en GitHub (altura reducida) -->
+            <div class="relative h-28 rounded-xl overflow-hidden flex items-end p-3 shadow-inner border border-slate-800 bg-slate-900 bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 60%, transparent 100%), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/banner.png');">
                 
-                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full z-10">En Stock</span>
+                <span class="absolute top-2.5 right-2.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-semibold px-2 py-0.5 rounded-full z-10">En Stock</span>
                 
                 <div class="relative z-10">
-                    <h2 class="text-lg font-black tracking-tight text-white drop-shadow-md">Grand Theft Auto VI</h2>
-                    <p class="text-xs text-indigo-300 font-semibold">Ultimate Edition • Rockstar Games</p>
+                    <h2 class="text-sm font-black tracking-tight text-white drop-shadow-md">Grand Theft Auto VI</h2>
+                    <p class="text-[10px] text-indigo-300 font-semibold">Ultimate Edition • Rockstar Games</p>
                 </div>
             </div>
 
-            <!-- TEXTO DESCRIPTIVO Y DE RESERVA SOLICITADO -->
-            <div class="bg-slate-950/60 p-3.5 rounded-xl border border-slate-800/80 space-y-1.5 text-xs text-left">
-                <p class="text-slate-300 font-medium leading-relaxed">La evolución más grande e inmersiva de la saga Grand Theft Auto hasta ahora.</p>
-                <p class="text-indigo-400 font-bold tracking-wide">Reserva tu copia: la primera tanda llega el día del lanzamiento.</p>
+            <!-- TEXTO DESCRIPTIVO Y DE RESERVA (Más pequeño y compacto) -->
+            <div class="bg-slate-950/60 px-3 py-2 rounded-xl border border-slate-800/80 space-y-0.5 text-[10px]">
+                <p class="text-slate-300 font-normal leading-tight">La evolución más grande e inmersiva de la saga Grand Theft Auto hasta ahora.</p>
+                <p class="text-indigo-400 font-semibold">Reserva tu copia: la primera tanda llega el día del lanzamiento.</p>
             </div>
 
             <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-2.5">
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Vincular cuenta de destino</label>
                     <!-- Campo de texto con autocompletado desactivado -->
-                    <input type="text" id="recipient-input" placeholder="Nombre o Gamertag" autocomplete="off" spellcheck="false" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
+                    <input type="text" id="recipient-input" placeholder="Nombre o Gamertag" autocomplete="off" spellcheck="false" class="w-full p-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-100 focus:outline-none focus:border-indigo-500">
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1">
                     <div class="flex items-center justify-between">
                         <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
                         <!-- Indicador de Precompra -->
-                        <span class="text-[10px] font-extrabold bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-full tracking-wider">⚡ PRECOMPRA DIGITAL</span>
+                        <span class="text-[9px] font-extrabold bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-full tracking-wider">⚡ PRECOMPRA DIGITAL</span>
                     </div>
                     
                     <div class="grid grid-cols-2 gap-2">
                         <!-- PlayStation 5 con su logo -->
-                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300">
-                            <img src="https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/play-station.jpg" alt="PS5" class="w-5 h-5 object-contain rounded invert brightness-200">
+                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-indigo-300">
+                            <img src="https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/play-station.jpg" alt="PS5" class="w-4 h-4 object-contain rounded invert brightness-200">
                             PlayStation 5
                         </button>
                         <!-- Xbox Series X|S con su logo -->
-                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400">
-                            <img src="https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/Xbox.png" alt="Xbox" class="w-5 h-5 object-contain rounded invert brightness-200">
+                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-slate-400">
+                            <img src="https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/Xbox.png" alt="Xbox" class="w-4 h-4 object-contain rounded invert brightness-200">
                             Xbox Series X|S
                         </button>
                     </div>
                 </div>
             </div>
 
-            <div class="space-y-3">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="selectEdition('Standard', 79.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Standard</div>
-                        <div class="text-xs text-indigo-300 font-semibold mt-1">79,99 €</div>
+            <div class="space-y-1.5">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
+                <div class="grid grid-cols-2 gap-2">
+                    <button onclick="selectEdition('Standard', 79.99)" id="btn-standard" class="p-2.5 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-xs">Standard</div>
+                        <div class="text-[11px] text-indigo-300 font-semibold mt-0.5">79,99 €</div>
                     </button>
-                    <button onclick="selectEdition('Ultimate Edition', 99.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
-                        <div class="font-bold text-sm">Ultimate Edition</div>
-                        <div class="text-xs text-slate-400 font-semibold mt-1">99,99 €</div>
+                    <button onclick="selectEdition('Ultimate Edition', 99.99)" id="btn-deluxe" class="p-2.5 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-xs">Ultimate Edition</div>
+                        <div class="text-[11px] text-slate-400 font-semibold mt-0.5">99,99 €</div>
                     </button>
                 </div>
             </div>
 
-            <button onclick="goToStep(2)" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+            <button onclick="goToStep(2)" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl shadow-lg transition cursor-pointer">
                 Comprar ahora
             </button>
         </div>
 
         <!-- PASO 2: MÉTODO DE PAGO Y CONFIRMACIÓN -->
-        <div id="step-2" class="p-6 space-y-6 hidden">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <div id="step-2" class="p-4 space-y-3 hidden">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-2.5">
                 <button onclick="goToStep(1)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer">← Volver</button>
-                <h3 class="font-bold text-sm">Finalizar Pedido</h3>
+                <h3 class="font-bold text-xs">Finalizar Pedido</h3>
                 <span></span>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5 text-xs">
                 <div class="flex justify-between text-slate-400">
                     <span id="summary-edition">GTA VI (Standard)</span>
                     <span id="summary-price">79,99 €</span>
@@ -138,61 +138,61 @@
                     <span>Impuestos incluidos</span>
                     <span>0,00 €</span>
                 </div>
-                <div class="border-t border-slate-800 pt-2 flex justify-between font-bold text-base text-white">
+                <div class="border-t border-slate-800 pt-1.5 flex justify-between font-bold text-sm text-white">
                     <span>Total</span>
                     <span id="summary-total" class="text-indigo-400">79,99 €</span>
                 </div>
             </div>
 
-            <div class="space-y-3">
-                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
+            <div class="space-y-2">
+                <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
                 <div class="space-y-2">
                     <!-- Tarjeta VISA -->
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
-                        <div class="flex items-center gap-3">
+                    <label class="flex items-center justify-between p-2.5 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
+                        <div class="flex items-center gap-2.5">
                             <input type="radio" name="payment" value="VISA" checked class="accent-indigo-500">
-                            <span class="text-sm font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
+                            <span class="text-xs font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
                         </div>
                         <div class="bg-white px-2 py-0.5 rounded shadow-sm flex items-center justify-center">
-                            <span class="text-blue-700 font-black italic tracking-tighter text-xs">VISA</span>
+                            <span class="text-blue-700 font-black italic tracking-tighter text-[10px]">VISA</span>
                         </div>
                     </label>
 
                     <!-- PayPal -->
-                    <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
-                        <div class="flex items-center gap-3">
+                    <label class="flex items-center justify-between p-2.5 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
+                        <div class="flex items-center gap-2.5">
                             <input type="radio" name="payment" value="PayPal" class="accent-indigo-500">
-                            <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
+                            <span class="text-xs font-medium">PayPal (Grandtf@gmail.com)</span>
                         </div>
-                        <span class="text-xs text-sky-400 font-bold">PayPal</span>
+                        <span class="text-[11px] text-sky-400 font-bold">PayPal</span>
                     </label>
                 </div>
             </div>
 
-            <button onclick="completePurchase()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+            <button onclick="completePurchase()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-lg transition cursor-pointer">
                 Confirmar y Pagar
             </button>
         </div>
 
         <!-- PASO 3: PANTALLA DE CARGA Y ÉXITO -->
-        <div id="step-3" class="p-8 text-center space-y-6 hidden">
+        <div id="step-3" class="p-5 text-center space-y-4 hidden">
             <!-- Insignia del método de pago elegido -->
-            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
+            <div id="success-payment-icon" class="w-14 h-10 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
 
             <!-- CONTENEDOR DE CARGA (Visible solo durante los 3 segundos iniciales) -->
-            <div id="loading-container" class="py-6 space-y-4 flex flex-col items-center">
-                <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+            <div id="loading-container" class="py-3 space-y-2.5 flex flex-col items-center">
+                <div class="w-8 h-8 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                 <p class="text-xs text-slate-400 font-medium">Procesando precompra segura...</p>
             </div>
 
             <!-- CONTENEDOR DE ÉXITO (Oculto al principio, se muestra tras la carga) -->
-            <div id="success-content" class="space-y-6 hidden">
-                <div class="space-y-2">
-                    <h3 class="text-xl font-black">¡Precompra realizada con éxito!</h3>
-                    <p class="text-xs text-slate-400">El juego se ha pre-añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
+            <div id="success-content" class="space-y-3.5 hidden">
+                <div class="space-y-1">
+                    <h3 class="text-base font-black">¡Precompra realizada con éxito!</h3>
+                    <p class="text-[11px] text-slate-400">El juego se ha pre-añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
                 </div>
 
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-left text-xs space-y-2">
                     <div class="text-slate-500 flex justify-between">
                         <span>Nº de pedido:</span>
                         <span id="order-id" class="text-slate-300 font-mono"></span>
@@ -201,13 +201,13 @@
                         <span>Plataforma:</span>
                         <span id="final-platform-text" class="text-slate-300 font-bold"></span>
                     </div>
-                    <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
+                    <div class="text-slate-500 flex items-center justify-between pt-1.5 border-t border-slate-900">
                         <span>Método de pago:</span>
                         <span id="final-payment-method" class="text-slate-200 font-bold"></span>
                     </div>
                 </div>
 
-                <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
+                <button onclick="resetApp()" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl transition cursor-pointer">
                     Finalizar compra
                 </button>
             </div>
@@ -226,22 +226,22 @@
             selectedPrice = price;
 
             if (edition === 'Standard') {
-                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
-                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-standard').className = "p-2.5 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-deluxe').className = "p-2.5 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
             } else {
-                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
-                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-deluxe').className = "p-2.5 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-standard').className = "p-2.5 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
             }
         }
 
         function selectPlatform(platform) {
             selectedPlatformName = platform;
             if (platform === 'PlayStation 5') {
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400";
+                document.getElementById('btn-ps').className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-indigo-300";
+                document.getElementById('btn-xbox').className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-slate-400";
             } else {
-                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300";
-                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-slate-400";
+                document.getElementById('btn-xbox').className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-indigo-300";
+                document.getElementById('btn-ps').className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 flex items-center justify-center gap-1.5 transition cursor-pointer font-bold text-[11px] text-slate-400";
             }
         }
 
@@ -273,9 +273,9 @@
             
             const iconContainer = document.getElementById('success-payment-icon');
             if (selectedPayment === 'VISA') {
-                iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-base">VISA</span>`;
+                iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-sm">VISA</span>`;
             } else {
-                iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-xs">PayPal</span>`;
+                iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-[10px]">PayPal</span>`;
             }
 
             // Rellenar datos en segundo plano
