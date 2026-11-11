@@ -11,12 +11,25 @@
 
     <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden" id="app">
         
-        <!-- PASO 1: DETALLES DEL JUEGO -->
+        <!-- PASO 1: DETALLES DEL JUEGO Y PERFIL -->
         <div id="step-1" class="p-6 space-y-6">
-            <div class="relative h-48 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
+            
+            <!-- Selector de perfil añadido -->
+            <div class="flex items-center justify-between bg-slate-950 p-3 rounded-xl border border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white text-xs">🎮</div>
+                    <div>
+                        <div class="text-[10px] text-slate-400 uppercase tracking-wider">Perfil Activo:</div>
+                        <input type="text" id="gamertag-input" value="mikilin1991" class="bg-transparent font-bold text-sm text-indigo-400 focus:outline-none border-b border-indigo-500/50 w-36">
+                    </div>
+                </div>
+                <span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">Online</span>
+            </div>
+
+            <div class="relative h-40 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
                 <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">En Stock</span>
                 <div>
-                    <h2 class="text-2xl font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
+                    <h2 class="text-xl font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
                     <p class="text-xs text-slate-400">Desarrollado por Indie Studio • RPG / Acción</p>
                 </div>
             </div>
@@ -54,6 +67,10 @@
                     <span id="summary-price">29,99 €</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
+                    <span>Cuenta de destino</span>
+                    <span id="summary-user" class="text-indigo-400 font-medium">mikilin1991</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
                     <span>Impuestos incluidos</span>
                     <span>0,00 €</span>
                 </div>
@@ -89,11 +106,12 @@
             </div>
             <div class="space-y-2">
                 <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
-                <p class="text-xs text-slate-400">Tu contenido se está preparando para la descarga en tu consola simulada.</p>
+                <p class="text-xs text-slate-400">Tu contenido se está preparando para la descarga en la cuenta de <span id="final-user" class="text-indigo-400 font-bold"></span>.</p>
             </div>
 
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-1">
                 <div class="text-slate-500">Nº de pedido: <span id="order-id" class="text-slate-300 font-mono"></span></div>
+                <div class="text-slate-500">Perfil: <span id="final-user-tag" class="text-slate-300 font-bold"></span></div>
                 <div class="text-slate-500">Plataforma: <span class="text-slate-300">Xbox Series X / PS5 (Simulado)</span></div>
             </div>
 
@@ -127,19 +145,26 @@
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.add('hidden');
 
+            const currentGamertag = document.getElementById('gamertag-input').value || 'mikilin1991';
+
             if (step === 1) {
                 document.getElementById('step-1').classList.remove('hidden');
             } else if (step === 2) {
                 document.getElementById('summary-edition').innerText = `Cyber Quest (${selectedEditionName})`;
                 document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
                 document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-user').innerText = currentGamertag;
                 document.getElementById('step-2').classList.remove('hidden');
             }
         }
 
         function completePurchase() {
+            const currentGamertag = document.getElementById('gamertag-input').value || 'mikilin1991';
             const randomId = 'XBOX-PS-' + Math.floor(100000 + Math.random() * 900000);
+            
             document.getElementById('order-id').innerText = randomId;
+            document.getElementById('final-user').innerText = currentGamertag;
+            document.getElementById('final-user-tag').innerText = currentGamertag;
             
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
