@@ -6,6 +6,38 @@
     <title>Simulador de Tienda - Grand Theft Auto VI</title>
     <!-- Tailwind CSS para un diseño moderno -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Firebase SDK Modular con tus claves reales -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+        // CONFIGURACIÓN DE TU NUEVO PROYECTO FIREBASE (Gta6-tienda-2026)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDrRXuNVzxZUy9PfEslOTgBqGxgVGSv3sg",
+            authDomain: "gta6-tienda-2026.firebaseapp.com",
+            projectId: "gta6-tienda-2026",
+            storageBucket: "gta6-tienda-2026.firebasestorage.app",
+            messagingSenderId: "250660173153",
+            appId: "1:250660173153:web:6dd1f0c8052452471ac120"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Función global para guardar cada compra en la colección 'compras_gta6' de Firestore
+        window.guardarCompraEnFirebase = async function(compraData) {
+            try {
+                await addDoc(collection(db, "compras_gta6"), {
+                    ...compraData,
+                    fecha: serverTimestamp()
+                });
+                console.log("¡Compra guardada en Firebase con éxito!");
+            } catch (e) {
+                console.error("Error al guardar en Firebase: ", e);
+            }
+        };
+    </script>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
 
@@ -129,10 +161,8 @@
 
         <!-- PASO 3: PANTALLA DE ÉXITO -->
         <div id="step-3" class="p-8 text-center space-y-6 hidden">
-            <!-- Insignia del método de pago elegido en la parte superior -->
-            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto">
-                <!-- Se rellena con JS -->
-            </div>
+            <!-- Insignia del método de pago elegido -->
+            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto"></div>
 
             <div class="space-y-2">
                 <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
@@ -161,7 +191,7 @@
 
     </div>
 
-    <!-- Script de control de la simulación -->
+    <!-- Script de control y guardado -->
     <script>
         let selectedEditionName = 'Standard';
         let selectedPrice = 79.99;
@@ -214,11 +244,9 @@
             const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
             const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PURCHASE-' + Math.floor(100000 + Math.random() * 900000);
             
-            // Recoger el método de pago elegido
             const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
             const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
             
-            // Mostrar la insignia de VISA o PayPal arriba
             const iconContainer = document.getElementById('success-payment-icon');
             if (selectedPayment === 'VISA') {
                 iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-base">VISA</span>`;
@@ -231,6 +259,18 @@
             document.getElementById('final-platform').innerText = selectedPlatformName;
             document.getElementById('final-platform-text').innerText = selectedPlatformName;
             document.getElementById('final-payment-method').innerText = paymentText;
+
+            // Enviar datos reales a Firestore en el nuevo proyecto
+            if (window.guardarCompraEnFirebase) {
+                window.guardarCompraEnFirebase({
+                    pedidoId: randomId,
+                    usuario: recipientName,
+                    plataforma: selectedPlatformName,
+                    edicion: selectedEditionName,
+                    precio: selectedPrice,
+                    metodoPago: paymentText
+                });
+            }
             
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
