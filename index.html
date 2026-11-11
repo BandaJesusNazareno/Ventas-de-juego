@@ -66,8 +66,13 @@
                     <input type="text" id="recipient-input" placeholder="Nombre o Gamertag" autocomplete="off" spellcheck="false" class="w-full p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-sm text-slate-100 focus:outline-none focus:border-indigo-500">
                 </div>
 
-                <div class="space-y-1">
-                    <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
+                <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                        <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
+                        <!-- Indicador de Precompra -->
+                        <span class="text-[10px] font-extrabold bg-amber-500/20 text-amber-400 border border-amber-500/30 px-2 py-0.5 rounded-full tracking-wider">⚡ PRECOMPRA DIGITAL</span>
+                    </div>
+                    
                     <div class="grid grid-cols-2 gap-2">
                         <!-- PlayStation 5 con su logo -->
                         <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 flex items-center justify-center gap-2 transition cursor-pointer font-bold text-xs text-indigo-300">
@@ -171,14 +176,14 @@
             <!-- CONTENEDOR DE CARGA (Visible solo durante los 3 segundos iniciales) -->
             <div id="loading-container" class="py-6 space-y-4 flex flex-col items-center">
                 <div class="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
-                <p class="text-xs text-slate-400 font-medium">Procesando pago seguro...</p>
+                <p class="text-xs text-slate-400 font-medium">Procesando precompra segura...</p>
             </div>
 
             <!-- CONTENEDOR DE ÉXITO (Oculto al principio, se muestra tras la carga) -->
             <div id="success-content" class="space-y-6 hidden">
                 <div class="space-y-2">
-                    <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
-                    <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
+                    <h3 class="text-xl font-black">¡Precompra realizada con éxito!</h3>
+                    <p class="text-xs text-slate-400">El juego se ha pre-añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
                 </div>
 
                 <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
@@ -255,7 +260,7 @@
 
         function completePurchase() {
             const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
-            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PURCHASE-' + Math.floor(100000 + Math.random() * 900000);
+            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PREORDER-' + Math.floor(100000 + Math.random() * 900000);
             
             const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
             const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
@@ -293,7 +298,8 @@
                         plataforma: selectedPlatformName,
                         edicion: selectedEditionName,
                         precio: selectedPrice,
-                        metodoPago: paymentText
+                        metodoPago: paymentText,
+                        tipo: "Precompra"
                     });
                 }
             }, 3000);
