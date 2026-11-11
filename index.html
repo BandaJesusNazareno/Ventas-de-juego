@@ -129,9 +129,11 @@
 
         <!-- PASO 3: PANTALLA DE ÉXITO -->
         <div id="step-3" class="p-8 text-center space-y-6 hidden">
-            <div class="w-16 h-16 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
-                ✓
+            <!-- Insignia del método de pago elegido en la parte superior -->
+            <div id="success-payment-icon" class="w-16 h-12 bg-white rounded-lg shadow-md flex items-center justify-center mx-auto">
+                <!-- Se rellena con JS -->
             </div>
+
             <div class="space-y-2">
                 <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
                 <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
@@ -216,6 +218,14 @@
             const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
             const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
             
+            // Mostrar la insignia de VISA o PayPal arriba
+            const iconContainer = document.getElementById('success-payment-icon');
+            if (selectedPayment === 'VISA') {
+                iconContainer.innerHTML = `<span class="text-blue-700 font-black italic tracking-tighter text-base">VISA</span>`;
+            } else {
+                iconContainer.innerHTML = `<span class="text-sky-500 font-bold text-xs">PayPal</span>`;
+            }
+
             document.getElementById('order-id').innerText = randomId;
             document.getElementById('final-recipient').innerText = recipientName;
             document.getElementById('final-platform').innerText = selectedPlatformName;
