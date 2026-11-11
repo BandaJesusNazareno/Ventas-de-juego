@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Tienda - Compra de Juego</title>
+    <!-- Tailwind CSS para un diseño moderno -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden" id="app">
+        
+        <!-- PASO 1: DETALLES DEL JUEGO -->
+        <div id="step-1" class="p-6 space-y-6">
+            <div class="relative h-48 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
+                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">En Stock</span>
+                <div>
+                    <h2 class="text-2xl font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
+                    <p class="text-xs text-slate-400">Desarrollado por Indie Studio • RPG / Acción</p>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Selecciona la Edición</label>
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="selectEdition('Standard', 29.99)" id="btn-standard" class="p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Estándar</div>
+                        <div class="text-xs text-indigo-300 font-semibold mt-1">29,99 €</div>
+                    </button>
+                    <button onclick="selectEdition('Deluxe', 49.99)" id="btn-deluxe" class="p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer">
+                        <div class="font-bold text-sm">Deluxe</div>
+                        <div class="text-xs text-slate-400 font-semibold mt-1">49,99 €</div>
+                    </button>
+                </div>
+            </div>
+
+            <button onclick="goToStep(2)" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+                Comprar ahora
+            </button>
+        </div>
+
+        <!-- PASO 2: MÉTODO DE PAGO Y CONFIRMACIÓN -->
+        <div id="step-2" class="p-6 space-y-6 hidden">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                <button onclick="goToStep(1)" class="text-xs text-slate-400 hover:text-white flex items-center gap-1 cursor-pointer">← Volver</button>
+                <h3 class="font-bold text-sm">Finalizar Pedido</h3>
+                <span></span>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
+                <div class="flex justify-between text-slate-400">
+                    <span id="summary-edition">Cyber Quest (Estándar)</span>
+                    <span id="summary-price">29,99 €</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Impuestos incluidos</span>
+                    <span>0,00 €</span>
+                </div>
+                <div class="border-t border-slate-800 pt-2 flex justify-between font-bold text-base text-white">
+                    <span>Total</span>
+                    <span id="summary-total" class="text-indigo-400">29,99 €</span>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
+                <div class="space-y-2">
+                    <label class="flex items-center gap-3 p-3 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
+                        <input type="radio" name="payment" checked class="accent-indigo-500">
+                        <span class="text-sm font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
+                        <input type="radio" name="payment" class="accent-indigo-500">
+                        <span class="text-sm font-medium">PayPal (usuario@simulado.com)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="completePurchase()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg transition cursor-pointer">
+                Confirmar y Pagar
+            </button>
+        </div>
+
+        <!-- PASO 3: PANTALLA DE ÉXITO -->
+        <div id="step-3" class="p-8 text-center space-y-6 hidden">
+            <div class="w-16 h-16 bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">
+                ✓
+            </div>
+            <div class="space-y-2">
+                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
+                <p class="text-xs text-slate-400">Tu contenido se está preparando para la descarga en tu consola simulada.</p>
+            </div>
+
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-1">
+                <div class="text-slate-500">Nº de pedido: <span id="order-id" class="text-slate-300 font-mono"></span></div>
+                <div class="text-slate-500">Plataforma: <span class="text-slate-300">Xbox Series X / PS5 (Simulado)</span></div>
+            </div>
+
+            <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
+                Simular otra compra
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Script de control de la simulación -->
+    <script>
+        let selectedEditionName = 'Estándar';
+        let selectedPrice = 29.99;
+
+        function selectEdition(edition, price) {
+            selectedEditionName = edition;
+            selectedPrice = price;
+
+            if (edition === 'Standard') {
+                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+            } else {
+                document.getElementById('btn-deluxe').className = "p-3 rounded-xl border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer";
+                document.getElementById('btn-standard').className = "p-3 rounded-xl border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer";
+            }
+        }
+
+        function goToStep(step) {
+            document.getElementById('step-1').classList.add('hidden');
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.add('hidden');
+
+            if (step === 1) {
+                document.getElementById('step-1').classList.remove('hidden');
+            } else if (step === 2) {
+                document.getElementById('summary-edition').innerText = `Cyber Quest (${selectedEditionName})`;
+                document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
+                document.getElementById('step-2').classList.remove('hidden');
+            }
+        }
+
+        function completePurchase() {
+            const randomId = 'XBOX-PS-' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('order-id').innerText = randomId;
+            
+            document.getElementById('step-2').classList.add('hidden');
+            document.getElementById('step-3').classList.remove('hidden');
+        }
+
+        function resetApp() {
+            selectEdition('Standard', 29.99);
+            goToStep(1);
+        }
+    </script>
+</body>
+</html>
