@@ -14,11 +14,16 @@
         <!-- PASO 1: DETALLES DEL JUEGO, DESTINATARIO Y PLATAFORMA -->
         <div id="step-1" class="p-6 space-y-6">
             
-            <div class="relative h-36 rounded-xl bg-gradient-to-tr from-indigo-900 via-purple-900 to-slate-800 flex items-end p-4 shadow-inner">
-                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full">En Stock</span>
-                <div>
-                    <h2 class="text-lg font-black tracking-tight">Cyber Quest: Ultimate Edition</h2>
-                    <p class="text-xs text-slate-400">Desarrollado por Indie Studio • RPG / Acción</p>
+            <!-- Cabecera con la imagen de GTA VI -->
+            <div class="relative h-44 rounded-xl overflow-hidden flex items-end p-4 shadow-inner bg-cover bg-center border border-slate-800" style="background-image: url('banner.png'); background-color: #1e1b4b;">
+                <!-- Degradado oscuro para que el texto resalte -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+                
+                <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full z-10">En Stock</span>
+                
+                <div class="relative z-10">
+                    <h2 class="text-lg font-black tracking-tight text-white drop-shadow-md">Grand Theft Auto VI</h2>
+                    <p class="text-xs text-indigo-300 font-semibold">Ultimate Edition • Rockstar Games</p>
                 </div>
             </div>
 
@@ -71,7 +76,7 @@
 
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2 text-sm">
                 <div class="flex justify-between text-slate-400">
-                    <span id="summary-edition">Cyber Quest (Standard)</span>
+                    <span id="summary-edition">GTA VI (Standard)</span>
                     <span id="summary-price">79,99 €</span>
                 </div>
                 <div class="flex justify-between text-slate-400">
@@ -101,7 +106,7 @@
                     </label>
                     <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
                         <input type="radio" name="payment" class="accent-indigo-500">
-                        <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
+                        <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>[cite: 6]
                     </label>
                 </div>
             </div>
@@ -173,7 +178,7 @@
             if (step === 1) {
                 document.getElementById('step-1').classList.remove('hidden');
             } else if (step === 2) {
-                document.getElementById('summary-edition').innerText = `Cyber Quest (${selectedEditionName})`;
+                document.getElementById('summary-edition').innerText = `GTA VI (${selectedEditionName})`;
                 document.getElementById('summary-price').innerText = `${selectedPrice.toFixed(2)} €`;
                 document.getElementById('summary-total').innerText = `${selectedPrice.toFixed(2)} €`;
                 document.getElementById('summary-platform').innerText = selectedPlatformName;
