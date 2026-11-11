@@ -25,7 +25,7 @@
                 </div>
             </div>
 
-            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA (LIMPIO SIN MANDOS) -->
+            <!-- SELECCIÓN DE DESTINATARIO Y PLATAFORMA -->
             <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-4">
                 <div class="space-y-1">
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">¿A quién le regalas el juego?</label>
@@ -36,18 +36,12 @@
                     <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Elige la Plataforma</label>
                     <div class="grid grid-cols-2 gap-2">
                         <!-- PlayStation 5 -->
-                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center">
-                            <div class="font-bold text-xs text-indigo-200">
-                                PlayStation 5
-                            </div>
-                            <span class="text-[8px] text-indigo-400 font-medium">PRECOMPRAR ›</span>
+                        <button type="button" onclick="selectPlatform('PlayStation 5')" id="btn-ps" class="p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300">
+                            PlayStation 5
                         </button>
                         <!-- Xbox Series X|S -->
-                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center">
-                            <div class="font-bold text-xs text-slate-400" id="xbox-text">
-                                Xbox Series X|S
-                            </div>
-                            <span class="text-[8px] text-slate-500 font-medium" id="xbox-sub">PRECOMPRAR ›</span>
+                        <button type="button" onclick="selectPlatform('Xbox Series X|S')" id="btn-xbox" class="p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400">
+                            Xbox Series X|S
                         </button>
                     </div>
                 </div>
@@ -106,10 +100,10 @@
             <div class="space-y-3">
                 <label class="text-xs font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
                 <div class="space-y-2">
-                    <!-- Tarjeta con etiqueta VISA real -->
+                    <!-- Tarjeta VISA -->
                     <label class="flex items-center justify-between p-3 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <input type="radio" name="payment" checked class="accent-indigo-500">
+                            <input type="radio" name="payment" value="VISA" checked class="accent-indigo-500">
                             <span class="text-sm font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
                         </div>
                         <div class="bg-white px-2 py-0.5 rounded shadow-sm flex items-center justify-center">
@@ -120,7 +114,7 @@
                     <!-- PayPal -->
                     <label class="flex items-center justify-between p-3 rounded-xl border border-slate-800 bg-slate-950/40 cursor-pointer">
                         <div class="flex items-center gap-3">
-                            <input type="radio" name="payment" class="accent-indigo-500">
+                            <input type="radio" name="payment" value="PayPal" class="accent-indigo-500">
                             <span class="text-sm font-medium">PayPal (Grandtf@gmail.com)</span>
                         </div>
                         <span class="text-xs text-sky-400 font-bold">PayPal</span>
@@ -139,13 +133,23 @@
                 ✓
             </div>
             <div class="space-y-2">
-                <h3 class="text-xl font-black">¡Regalo realizado con éxito!</h3>
-                <p class="text-xs text-slate-400">El juego se ha enviado a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
+                <h3 class="text-xl font-black">¡Compra realizada con éxito!</h3>
+                <p class="text-xs text-slate-400">El juego se ha añadido a la cuenta de <span id="final-recipient" class="text-emerald-400 font-bold"></span> en <span id="final-platform" class="text-indigo-400 font-bold"></span>.</p>
             </div>
 
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-2">
-                <div class="text-slate-500">Nº de pedido: <span id="order-id" class="text-slate-300 font-mono"></span></div>
-                <div class="text-slate-500">Plataforma: <span id="final-platform-text" class="text-slate-300 font-bold"></span></div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-left text-xs space-y-3">
+                <div class="text-slate-500 flex justify-between">
+                    <span>Nº de pedido:</span>
+                    <span id="order-id" class="text-slate-300 font-mono"></span>
+                </div>
+                <div class="text-slate-500 flex justify-between">
+                    <span>Plataforma:</span>
+                    <span id="final-platform-text" class="text-slate-300 font-bold"></span>
+                </div>
+                <div class="text-slate-500 flex items-center justify-between pt-2 border-t border-slate-900">
+                    <span>Método de pago:</span>
+                    <span id="final-payment-method" class="text-slate-200 font-bold"></span>
+                </div>
             </div>
 
             <button onclick="resetApp()" class="w-full py-3 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold rounded-xl transition cursor-pointer">
@@ -176,27 +180,12 @@
 
         function selectPlatform(platform) {
             selectedPlatformName = platform;
-            const psBtn = document.getElementById('btn-ps');
-            const xboxBtn = document.getElementById('btn-xbox');
-            const xboxText = document.getElementById('xbox-text');
-            const xboxSub = document.getElementById('xbox-sub');
-
             if (platform === 'PlayStation 5') {
-                psBtn.className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                psBtn.querySelector('div').className = "font-bold text-xs text-indigo-200";
-                psBtn.querySelector('span').className = "text-[8px] text-indigo-400 font-medium";
-
-                xboxBtn.className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                xboxText.className = "font-bold text-xs text-slate-400";
-                xboxSub.className = "text-[8px] text-slate-500 font-medium";
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
             } else {
-                xboxBtn.className = "p-2.5 rounded-lg border border-indigo-500 bg-indigo-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                xboxText.className = "font-bold text-xs text-indigo-200";
-                xboxSub.className = "text-[8px] text-indigo-400 font-medium";
-
-                psBtn.className = "p-2.5 rounded-lg border border-slate-800 bg-slate-950/40 text-left transition cursor-pointer flex flex-col justify-center";
-                psBtn.querySelector('div').className = "font-bold text-xs text-slate-400";
-                psBtn.querySelector('span').className = "text-[8px] text-slate-500 font-medium";
+                document.getElementById('btn-xbox').className = "p-3 rounded-lg border border-indigo-500 bg-indigo-950/40 text-center transition cursor-pointer font-bold text-xs text-indigo-300";
+                document.getElementById('btn-ps').className = "p-3 rounded-lg border border-slate-800 bg-slate-950/40 text-center transition cursor-pointer font-bold text-xs text-slate-400";
             }
         }
 
@@ -221,12 +210,17 @@
 
         function completePurchase() {
             const recipientName = document.getElementById('recipient-input').value.trim() || 'AmigoInvitado';
-            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-GIFT-' + Math.floor(100000 + Math.random() * 900000);
+            const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PURCHASE-' + Math.floor(100000 + Math.random() * 900000);
+            
+            // Recoger el método de pago elegido
+            const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+            const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
             
             document.getElementById('order-id').innerText = randomId;
             document.getElementById('final-recipient').innerText = recipientName;
             document.getElementById('final-platform').innerText = selectedPlatformName;
             document.getElementById('final-platform-text').innerText = selectedPlatformName;
+            document.getElementById('final-payment-method').innerText = paymentText;
             
             document.getElementById('step-2').classList.add('hidden');
             document.getElementById('step-3').classList.remove('hidden');
