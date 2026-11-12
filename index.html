@@ -47,7 +47,7 @@
         <!-- PASO 1: DETALLES DEL JUEGO, DESTINATARIO Y PLATAFORMA -->
         <div id="step-1" class="p-4 space-y-3">
             
-            <!-- Cabecera ampliada (h-44) tal como pediste -->
+            <!-- Cabecera ampliada (h-44) -->
             <div class="relative h-44 rounded-xl overflow-hidden flex items-end p-4 shadow-inner border border-slate-800 bg-slate-900 bg-cover bg-center" style="background-image: linear-gradient(to top, rgba(2, 6, 23, 0.9) 0%, rgba(2, 6, 23, 0.3) 60%, transparent 100%), url('https://raw.githubusercontent.com/BandaJesusNazareno/Ventas-de-juego/main/banner.png');">
                 
                 <span class="absolute top-3 right-3 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold px-2.5 py-1 rounded-full z-10">En Stock</span>
@@ -147,11 +147,11 @@
             <div class="space-y-2">
                 <label class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Método de pago simulado</label>
                 <div class="space-y-2">
-                    <!-- Tarjeta VISA -->
+                    <!-- Tarjeta VISA con terminación 0710 -->
                     <label class="flex items-center justify-between p-2.5 rounded-xl border border-indigo-500 bg-slate-950/40 cursor-pointer">
                         <div class="flex items-center gap-2.5">
                             <input type="radio" name="payment" value="VISA" checked class="accent-indigo-500">
-                            <span class="text-xs font-medium">Tarjeta de Crédito / Débito (•••• 4242)</span>
+                            <span class="text-xs font-medium">Tarjeta de Crédito / Débito (•••• 0710)</span>
                         </div>
                         <div class="bg-white px-2 py-0.5 rounded shadow-sm flex items-center justify-center">
                             <span class="text-blue-700 font-black italic tracking-tighter text-[10px]">VISA</span>
@@ -269,7 +269,7 @@
             const randomId = (selectedPlatformName.includes('PlayStation') ? 'PS5' : 'XBOX') + '-PREORDER-' + Math.floor(100000 + Math.random() * 900000);
             
             const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
-            const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 4242)' : 'PayPal (Grandtf@gmail.com)';
+            const paymentText = selectedPayment === 'VISA' ? 'Tarjeta VISA (•••• 0710)' : 'PayPal (Grandtf@gmail.com)';
             
             const iconContainer = document.getElementById('success-payment-icon');
             if (selectedPayment === 'VISA') {
